@@ -40,7 +40,4 @@ class Solution:
         
         return pList
 
-                    
-
-
         

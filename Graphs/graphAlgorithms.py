@@ -1,5 +1,7 @@
 import heapq
 class Algorithms:
+
+    #----------Traversal----------#
     def bfs(graph, start):
         visited = set()
         q = deque()

@@ -108,5 +108,34 @@ class Algorithms:
                 if neighbor not in visited:
                     heapq.heappush
                 
+    class DSU:
+        def __init__(self, n):
+            self.parent = list(range(n))
+            self.rank = [0] * n
+
+        def find(self, x):
+            if self.parent[x] != x:
+                self.parent[x] self.find(self.parent[x])
+            return self.parent[x]
+        def union(self, x, y):
+            xr = self.find(x)
+            yr = self.find(y)
+            if xr == yr:
+                return False
+            if self.rank[xr] < self.rank[yr]:
+                self.parent[xr] = yr
+            elif self.rank[xr] > self.rank[yr]:
+                self.parent[yr] = xr
+            else:
+                self.parent[yr] = xr
+                self.rank[xr] += 1
+            return True
+    
+    def kruskal(n, edges):
+        """
+        :param n: number of vertices
+        :param edges:  List of edges [u,v,weight]
+        :return: Total weight of the MST
+
 
 

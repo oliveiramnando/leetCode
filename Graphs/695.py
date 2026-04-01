@@ -49,3 +49,37 @@ class Solution:
                     max_island = max(max_island, bfs(r,c))
         
         return max_island
+
+# -----------_#
+
+class Solution:
+    def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
+        rows, cols = len(grid), len(grid[0])
+        visited = set()
+        maxArea = 0
+
+        def bfs(r,c):
+            visited.add((r,c))
+            q = deque()
+            q.append((r,c))
+            area = 1
+
+            while q:
+                row, col = q.popleft()
+                directions = [[1,0], [-1,0], [0,1], [0,-1]]
+
+                for dr, dc in directions:
+                    r, c = row + dr, col + dc
+                    if 0 <= r < rows and 0 <= c < cols and grid[r][c] == 1 and (r,c) not in visited:
+                        visited.add((r,c))
+                        q.append((r,c))
+                        area += 1
+
+            return area
+
+        for r in range(rows):
+            for c in range(cols):
+                if grid[r][c] == 1 and (r,c) not in visited:
+                    maxArea = max(maxArea, bfs(r,c))
+
+        return maxArea

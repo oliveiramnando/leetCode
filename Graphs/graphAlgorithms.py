@@ -1,7 +1,7 @@
 import heapq
 class Algorithms:
 
-    #----------Traversal----------#
+    ###----------Traversal----------####
     def bfs(graph, start):
         visited = set()
         q = deque()
@@ -18,6 +18,25 @@ class Algorithms:
             visited.add(node)
             for neighbor in node.neighbors:
                 dfs(graph, neighbor, visited)
+
+
+
+    visited = set()
+    def bfs(r,c): # for a matrix
+        q = deque()
+        q.append((r,c))
+        visited.add((r,c))
+
+        while q:
+            row, col = q.popleft()
+            directions = [[1,0], [-1,0], [0,1], [0,-1]]
+
+            for dr, dc in directions:
+                r, c = dr + row, dc + col
+                if 0 <= r < rows and 0 <= c < cols and grid[r][c] == 1 and (r,c) not in visited: # assuming grid is the name of the matrix and rows and cols are the len(grid) and len(grid[0])
+                    visited.add((r,c))
+                    q.append((r,c))
+        
 
     #----------Shortest Path Algorithms----------#
     def dijkstras(graph, start):

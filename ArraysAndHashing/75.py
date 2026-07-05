@@ -28,3 +28,5 @@ class Solution:
             nums[i] = 2
             i += 1
             colores[2] -= 1
+
+

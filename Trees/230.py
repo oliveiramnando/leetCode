@@ -6,6 +6,29 @@
 #         self.right = right
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
+        res = []
+
+        def levels(root):
+            if not root:
+                return 
+            nonlocal res
+            levels(root.left)
+            res.append(root.val)
+            levels(root.right)
+        
+        levels(root)
+
+        return res[k-1]
+        
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
         values = []
         self.inorder(root, values)
         return values[k - 1]
